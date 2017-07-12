@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+images/
+annotations/
+object_detection/pet/
+object_detection/sensiac/
+object_detection/pretrained/
+object_detection/test_images/
+object_detection/train/

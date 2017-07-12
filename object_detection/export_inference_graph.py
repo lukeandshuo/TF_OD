@@ -59,6 +59,11 @@ python export_inference_graph \
     --checkpoint_path path/to/model-ckpt \
     --inference_graph_path path/to/inference_graph.pb
 """
+import sys
+sys.path.append("..")
+sys.path.append("../slim")
+print sys.path
+
 import tensorflow as tf
 from google.protobuf import text_format
 from object_detection import exporter
@@ -70,13 +75,13 @@ flags = tf.app.flags
 flags.DEFINE_string('input_type', 'image_tensor', 'Type of input node. Can be '
                     'one of [`image_tensor`, `encoded_image_string_tensor`, '
                     '`tf_example`]')
-flags.DEFINE_string('pipeline_config_path', '',
+flags.DEFINE_string('pipeline_config_path', 'pet/faster_rcnn_resnet101_pets.config',
                     'Path to a pipeline_pb2.TrainEvalPipelineConfig config '
                     'file.')
-flags.DEFINE_string('checkpoint_path', '', 'Optional path to checkpoint file. '
+flags.DEFINE_string('checkpoint_path', 'train/model.ckpt-62239', 'Optional path to checkpoint file. '
                     'If provided, bakes the weights from the checkpoint into '
                     'the graph.')
-flags.DEFINE_string('inference_graph_path', '', 'Path to write the output '
+flags.DEFINE_string('inference_graph_path', 'frozen_inference_graph.pb', 'Path to write the output '
                     'inference graph.')
 flags.DEFINE_bool('export_as_saved_model', False, 'Whether the exported graph '
                   'should be saved as a SavedModel')

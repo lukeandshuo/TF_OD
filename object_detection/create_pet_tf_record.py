@@ -40,8 +40,8 @@ from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', '', 'Root directory to raw pet dataset.')
-flags.DEFINE_string('output_dir', '', 'Path to directory to output TFRecords.')
+flags.DEFINE_string('data_dir', '/home/shuoliu/Research/IROD/Code/TF_OD/models/', 'Root directory to raw pet dataset.')
+flags.DEFINE_string('output_dir', '/home/shuoliu/Research/IROD/Code/TF_OD/models/', 'Path to directory to output TFRecords.')
 flags.DEFINE_string('label_map_path', 'data/pet_label_map.pbtxt',
                     'Path to label map proto')
 FLAGS = flags.FLAGS
@@ -182,6 +182,8 @@ def create_tf_record(output_filename,
 
 # TODO: Add test for pet/PASCAL main files.
 def main(_):
+  print os.getcwd()
+
   data_dir = FLAGS.data_dir
   label_map_dict = label_map_util.get_label_map_dict(FLAGS.label_map_path)
 
